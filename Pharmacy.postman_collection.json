@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "27cd4e1b-0bd4-40dc-aa6f-3de07b366897",
+		"name": "Pharmacy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27010335"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "NewUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response content type is text/xml\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is not null\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Userid\": 124,\r\n    \"Name\": \"Simon\",\r\n    \"UserName\": \"Sim12\",\r\n    \"Password\": \"0000\",\r\n    \"Role\": \"Owner\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/User/NewUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"User",
+								"NewUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ViewUser",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Users/ViewUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Users",
+								"ViewUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Mary\",\r\n    \"UserName\": \"Mariee\",\r\n    \"Password\": \"12478\",\r\n    \"Role\": \"Manager\",\r\n    \"Userid\": \"125\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/User/UpdateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"User",
+								"UpdateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Userid\":\"124\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/User/DelUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"User",
+								"DelUser"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "12345",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "Admin",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Medicines",
+			"item": [
+				{
+					"name": "ViewMed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Medicines/ViewMed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Medicines",
+								"ViewMed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddMed",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MedId\":\"978\",\r\n    \"MedName\":\"Vit-C\",\r\n    \"Description\":\"100mg\",\r\n    \"Quantity\":\"80\",\r\n    \"UnitPrice\":\"76.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Medicines/AddMed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Medicines",
+								"AddMed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMed",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MedName\":\"Vit-C+\",\r\n    \"Description\":\"100mg\",\r\n    \"Quantity\":\"80\",\r\n    \"UnitPrice\":\"76.00\",\r\n    \"MedId\":\"978\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Medicines/UpdateMed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Medicines",
+								"UpdateMed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DelMed",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MedId\":\"987\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Medicines/DelMed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Medicines",
+								"DelMed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SoftDel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MedId\":\"987\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Medicines/SoftDel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Medicines",
+								"SoftDel"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "AddCustomer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CusId\":\"0019\",\r\n    \"Name\":\"Amy\",\r\n    \"Address\":\"South\",\r\n    \"Age\":\"34\",\r\n    \"PhoneNo\":\"123233232\",\r\n    \"is_deleted\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Customers/AddCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Customers",
+								"AddCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ViewCustomer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Customers/ViewCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Customers",
+								"ViewCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n    \"Name\":\"Amy1\",\r\n    \"Address\":\"South\",\r\n    \"Age\":\"34\",\r\n    \"PhoneNo\":\"077897878\",\r\n    \"is_deleted\":\"0\",\r\n       \"CusId\":\"0018\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Customers/EditCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Customers",
+								"EditCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"CusId\":\"006\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Customers/DeleteCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Customers",
+								"DeleteCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SoftDel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CusId\" :\"004\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Customers/SoftDel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Customers",
+								"SoftDel"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "1234",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "Nush",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var userRole = pm.environment.get('userRole');",
+							"",
+							"var ownerPermissions = [\"Customers/AddCustomer\", \"Customers/EditCustomer\", \"Customers/DeleteCustomer\", \"Customers/SoftDel\", \"Customers/ViewCustomer\"];",
+							"var managerPermissions = [\"Customers/EditCustomer\", \"Customers/SoftDel\", \"Customers/ViewCustomer\"];",
+							"var cashierPermissions = [\"Customers/EditCustomer\", \"Customers/ViewCustomer\"];",
+							"",
+							"// Check permissions based on user's role",
+							"switch (userRole) {",
+							"    case 'Owner':",
+							"        // Owner has all permissions",
+							"        break;",
+							"    case 'Manager':",
+							"        // Manager has limited permissions",
+							"        if (!managerPermissions.includes(pm.request.method.toLowerCase())) {",
+							"            postman.setNextRequest(null);",
+							"            pm.environment.set(\"errorMessage\", \"Access denied. Insufficient privileges.\");",
+							"        }",
+							"        break;",
+							"    case 'Cashier':",
+							"        // Cashier has limited permissions",
+							"        if (!cashierPermissions.includes(pm.request.method.toLowerCase())) {",
+							"            postman.setNextRequest(null);",
+							"            pm.environment.set(\"errorMessage\", \"Access denied. Insufficient privileges.\");",
+							"        }",
+							"        break;",
+							"    default:",
+							"        // Handle other roles or unauthorized access",
+							"        postman.setNextRequest(null);",
+							"        pm.environment.set(\"errorMessage\", \"Invalid role. Access denied.\");",
+							"        break;",
+							"}"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
